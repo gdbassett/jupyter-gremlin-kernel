@@ -4,4 +4,3 @@
 .idea
 target
 src/**/Version.java
-install.sh
