@@ -30,7 +30,7 @@ set -u
 mkdir $NAME
 cat kernel.json | sed \"s|__PATH__|\$1/$JAR|\" > $NAME/kernel.json
 cp $JAR \$1
-jupyter kernelspec install --replace --name groovy $NAME
+jupyter kernelspec install --replace --name lsd $NAME
 rm -rf $NAME" > $DIST/install.sh
 chmod ug+x $DIST/install.sh
 

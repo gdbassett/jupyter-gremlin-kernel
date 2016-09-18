@@ -2,7 +2,7 @@
 
 The Lappsgrid Serivces DSL (LSD) is a Groovy based DSL (Domain Specific Language) that can be used to invoke LAPPS Grid web services from Groovy scripts. 
 
-The [Jupyter](https://jupyter.org) LSD kernel is a Jupyter kernel based on the [Jupyter Groovy Kernel](https://github.com/lappsgrid-incubator/jupyter-groovy-kernel) that not only allows LSD scripts to be run in a Jupyter Notebook, but also allows scripts to interact with a Galaxy instance, for example the [LAPP/Galaxy](https://galaxy.lappsgrid.org) instance.
+The [Jupyter](https://jupyter.org) LSD kernel is a Jupyter kernel based on the [Jupyter Groovy Kernel](https://github.com/lappsgrid-incubator/jupyter-groovy-kernel) that not only allows LSD scripts to be run in a Jupyter Notebook, but also allows scripts to interact with a Galaxy instance, for example the [LAPPS/Galaxy](https://galaxy.lappsgrid.org) instance.
 
 ## Installation
 
