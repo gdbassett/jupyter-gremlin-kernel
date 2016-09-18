@@ -13,6 +13,7 @@ COPY startup.sh /usr/bin/startup
 RUN chmod a+x /usr/bin/startup
 RUN jupyter kernelspec install --name=lsd /jupyter/lsd
 
+USER jovyan
 WORKDIR /home/jovyan
 CMD ["/usr/bin/startup"]
 

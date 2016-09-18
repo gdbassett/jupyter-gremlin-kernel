@@ -89,7 +89,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <appendAssemblyId>false</appendAssemblyId>
+                    <appendAssemblyId>true</appendAssemblyId>
                     <archive>
                         <manifest>
                             <mainClass>org.lappsgrid.jupyter.lsd.LsdKernel</mainClass>
@@ -115,12 +115,13 @@
             <artifactId>ivy</artifactId>
             <version>${ivy.version}</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.lappsgrid</groupId>
             <artifactId>all</artifactId>
             <version>${lapps.all.version}</version>
         </dependency>
-        <!--
+        -->
         <dependency>
             <groupId>org.lappsgrid</groupId>
             <artifactId>api</artifactId>
@@ -156,7 +157,6 @@
             <artifactId>annotations</artifactId>
             <version>1.1.0</version>
         </dependency>
-        -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
