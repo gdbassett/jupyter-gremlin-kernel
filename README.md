@@ -5,10 +5,10 @@ The Lappsgrid Serivces DSL (LSD) is a Groovy based DSL (Domain Specific Language
 The [Jupyter](https://jupyter.org) LSD kernel is a Jupyter kernel based on the [Jupyter Groovy Kernel](https://github.com/lappsgrid-incubator/jupyter-groovy-kernel) that not only allows LSD scripts to be run in a Jupyter Notebook, but also allows scripts to interact with a Galaxy instance, for example the [LAPPS/Galaxy](https://galaxy.lappsgrid.org) instance.
 
 ## Table of contents
-1. [Installation](#Installation)
-1. [Connecting to Galaxy](#Connecting-to-Galaxy)
-1. [Functions](#Notebook-Functions)
-1. [Docker](#Docker)
+1. [Installation](#installation)
+1. [Connecting to Galaxy](#connecting-to-galaxy)
+1. [Functions](#notebook-functions)
+1. [Docker](#docker)
 
 ## Installation
 
@@ -93,3 +93,19 @@ Returns a pretty-printed JSON string representation of the `object`.
 Returns handles to the various Galaxy clients. See the Blend4J API documentation (link needed) for more information on these clients.
 
 ## Docker
+
+A Docker image containing the LSD kernel is available from the [Docker Hub](https://hub.docker.com/r/lappsgrid/jupyter-lsd-kernel/).  The container expects two environment variables to be defined that are used to connect to a Galaxy server:
+
+1. **GALAXY_HOST** The URL to a Galaxy server.
+1. **GALAXY_KEY** The API key for the user on the Galaxy server.
+
+Inside the container Jupyter uses the directory */home/jovyan* to save and load notebooks.  To persists notebooks created inside the container mount a local directory as */home/jovyan*.
+
+```bash
+$> HOST=http://galaxy.lappsgrid.org
+$> KEY=1234567890DEADBEEF
+$> ENV="-e GALAXY_HOST=$HOST -e GALAXY_KEY=$KEY"
+$> VOLUME="-v $HOME/notebooks:/home/jovyan"
+$> PORTS="-p 8888:8888"
+$> docker run -d $PORTS $ENV $VOLUME lappsgrid/jupyter-lsd-kernel 
+```
