@@ -1,5 +1,5 @@
 {
-  "argv": [ "java", "-jar", "/jupyter/jupyter-lsd-kernel-1.0.0-SNAPSHOT.jar", "{connection_file}" ],
+  "argv": [ "java", "-jar", "/jupyter/jupyter-lsd-kernel-1.0.0.jar", "{connection_file}" ],
   "display_name": "LSD",
   "language": "groovy",
   "env": { "PS1":"lsd>"}

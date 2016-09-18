@@ -15,6 +15,7 @@ fi
 cp $TARGET/$JAR $DIST
 cp kernel.json $DIST
 echo "#!/bin/bash
+
 set -e
 
 if [ -z \$1 ] ; then
@@ -22,7 +23,7 @@ if [ -z \$1 ] ; then
     echo 'Usage: ./install.sh <kernel directory>'
     echo
     echo 'Where <kernel directory> is the location the jar file'
-    echo 'will be installed to and must already exist.'
+    echo 'will be installed to. The directory must already exist.'
     exit 1
 fi
 set -u

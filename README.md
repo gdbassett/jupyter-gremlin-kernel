@@ -66,24 +66,24 @@ $> jupyter notebook
 
 The Jupyter LSD kernel provides serveral functions to simplify interacting with a Galaxy instance.
 
-**void selectHistory(String history_name)**
+**void selectHistory(String history_name)**<br/>
 Select the Galaxy history to work with.  It is a good practice to always name histories in Galaxy so they may be easily selected in Jupyter.  Since the Galaxy API has no concept of the *current history* it is impossible to select a history if they are all named *"Unnamed history"*.
 
-**File get(int history_id)**
+**File get(int history_id)**<br/>
 Returns a *java.io.File* object with the contents of the dataset with the given history id. The history id is simply the integer to the left of the dataset name in the history panel.
 
-**void put(Stirng path)**
-**void put(File file)**
+**void put(Stirng path)**<br/>
+**void put(File file)**<br/>
 Uploads the file to the currently selected Galaxy history.  You may need to refresh the history in Galaxy to see the newly uploaded file.  The dataset name will be the name of the uploaded file.
 
-**Object parse(String json)**
-**Object parse(String json, Class theClass)**
+**Object parse(String json)**<br/>
+**Object parse(String json, Class theClass)**<br/>
 Parses a JSON string into an instance of **theClass**.  Calling `parse(json)` is the same as calling `parse(json, org.lappsgrid.serialization.Data)`.
 
-**String toJson(Object object)**
+**String toJson(Object object)**<br/>
 Returns the compact JSON string representation of the `object`.
 
-**String toPrettyJSon(Object object)**
+**String toPrettyJSon(Object object)**<br/>
 Returns a pretty-printed JSON string representation of the `object`.
 
 **GalaxyInstance galaxy()**<br/>
