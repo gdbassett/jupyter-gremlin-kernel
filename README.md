@@ -4,6 +4,12 @@ The Lappsgrid Serivces DSL (LSD) is a Groovy based DSL (Domain Specific Language
 
 The [Jupyter](https://jupyter.org) LSD kernel is a Jupyter kernel based on the [Jupyter Groovy Kernel](https://github.com/lappsgrid-incubator/jupyter-groovy-kernel) that not only allows LSD scripts to be run in a Jupyter Notebook, but also allows scripts to interact with a Galaxy instance, for example the [LAPPS/Galaxy](https://galaxy.lappsgrid.org) instance.
 
+## Table of contents
+1. [Installation](#Installation)
+1. [Connecting to Galaxy](#Connecting-to-Galaxy)
+1. [Functions](#Notebook-Functions)
+1. [Docker](#Docker)
+
 ## Installation
 
 ### From Source
@@ -19,18 +25,18 @@ $> ./install.sh <kernel directory>
 
 Where *&lt;kernel directory&gt;* is a directory where the kernel jar file will be copied and can be any directory on your system.
 
-### Manually
+### From Pre-compiled Binaries
 
 Download and expand the [LSD Kernel archive](http://www.lappsgrid.org/downloads/jupyter-lsd-kernel-latest.tgz) and then run the *install.sh* script.
 
 ```bash
 $> wget http://www.lappsgrid.org/downloads/jupyter-lsd-kernel-latest.tgz
 $> tar xzf jupyter-lsd-kernel-latest.tgz
-$> cd jupyter-lsd-kernel
+$> cd jupyter-lsd-kernel-x.y.z
 $> ./install.sh <kernel directory>
 ```
 
-Where *&lt;kernel directory&gt;* is a directory where the kernel jar file will be copied and can be any directory on your system.
+Where *&lt;kernel directory&gt;* is a directory where the kernel jar file will be copied and can be any directory on your system. Replace *x.y.z* with the current version number.
 
 ### Notes
 
@@ -80,8 +86,10 @@ Returns the compact JSON string representation of the `object`.
 **String toPrettyJSon(Object object)**
 Returns a pretty-printed JSON string representation of the `object`.
 
-**GalaxyInstance galaxy()**
-**HistoriesClient histories()**
-**ToolsClient tools()**
-**History history()**
+**GalaxyInstance galaxy()**<br/>
+**HistoriesClient histories()**<br/>
+**ToolsClient tools()**<br/>
+**History history()**<br/>
 Returns handles to the various Galaxy clients. See the Blend4J API documentation (link needed) for more information on these clients.
+
+## Docker
