@@ -29,6 +29,12 @@ import org.lappsgrid.serialization.Serializer
  */
 abstract class BaseScript extends Script {
 
+    static {
+        Collection.metaClass.map    = { delegate.collect it }
+        Collection.metaClass.reduce = { object,closure -> delegate.inject(object,closure) }
+        Collection.metaClass.filter = { delegate.grep it }
+    }
+
     GalaxyClient galaxy = new GalaxyClient(LsdKernel.GALAXY_HOST, LsdKernel.GALAXY_KEY)
 
     File get(Integer hid) {

@@ -25,9 +25,13 @@ import org.lappsgrid.jupyter.groovy.json.Serializer
  *
  * @author Keith Suderman
  */
-class LsdKernel {
+class LsdKernel extends GroovyKernel {
     public static String GALAXY_HOST = "http://localhost:8000"
     public static String GALAXY_KEY = ""
+
+    public LsdKernel() {
+        super(new LsdContext())
+    }
 
     static void main(String[] args) {
         if (args.length < 1) {
@@ -52,7 +56,7 @@ class LsdKernel {
             println "GALAXY_KEY not set.  You will not be able to communicate with a Galaxy instance."
         }
 
-        GroovyKernel kernel = new GroovyKernel(new LsdContext())
+        GroovyKernel kernel = new LsdKernel()
         kernel.connectionFile = config
         kernel.run()
     }
