@@ -35,13 +35,19 @@ abstract class BaseScript extends Script {
         Collection.metaClass.filter = { delegate.grep it }
     }
 
-    GalaxyClient galaxy = new GalaxyClient(LsdKernel.GALAXY_HOST, LsdKernel.GALAXY_KEY)
+    GalaxyClient galaxy //= new GalaxyClient(LsdKernel.GALAXY_HOST, LsdKernel.GALAXY_KEY)
 
-    File get(Integer hid) {
+    void init() {
         if (galaxy == null) {
-            println "Not connected to a Galaxy instance."
-            return null
+            galaxy = new GalaxyClient(LsdKernel.GALAXY_HOST, LsdKernel.GALAXY_KEY)
         }
+    }
+    File get(Integer hid) {
+//        if (galaxy == null) {
+//            println "Not connected to a Galaxy instance."
+//            return null
+//        }
+        init()
         println "Getting history item $hid"
         File file = galaxy.get(hid)
         if (file == null) {
@@ -59,6 +65,7 @@ abstract class BaseScript extends Script {
 
     void put(File file) {
         println "Adding ${file.path} to the current history."
+        init()
         galaxy.put(file)
     }
 
@@ -79,16 +86,17 @@ abstract class BaseScript extends Script {
     }
 
     String selectHistory(String name) {
+        init()
         if (!galaxy.selectHistory(name)) {
             return "No history named '$name' was found."
         }
         return galaxy.history.id
     }
 
-    GalaxyInstance galaxy() { return galaxy.galaxy }
-    HistoriesClient histories() { return galaxy.histories }
-    ToolsClient tools() { return galaxy.tools }
-    History history() { return galaxy.history }
+    GalaxyInstance galaxy() { init(); return galaxy.galaxy }
+    HistoriesClient histories() { init(); return galaxy.histories }
+    ToolsClient tools() { init(); return galaxy.tools }
+    History history() { init(); return galaxy.history }
 
     void exit() {
         System.exit(0)
