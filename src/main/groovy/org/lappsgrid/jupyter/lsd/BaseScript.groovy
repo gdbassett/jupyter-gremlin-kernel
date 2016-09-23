@@ -93,6 +93,12 @@ abstract class BaseScript extends Script {
         return galaxy.history.id
     }
 
+    String version() {
+        String groovy = org.lappsgrid.jupyter.groovy.Version.getVersion()
+        String lsd =  org.lappsgrid.jupyter.lsd.Version.getVersion()
+        sprintf("Kernel Versions\nGroovy : %s\nLSD    : %s", groovy, lsd)
+    }
+    
     GalaxyInstance galaxy() { init(); return galaxy.galaxy }
     HistoriesClient histories() { init(); return galaxy.histories }
     ToolsClient tools() { init(); return galaxy.tools }

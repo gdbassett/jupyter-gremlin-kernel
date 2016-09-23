@@ -19,7 +19,7 @@ dist:
 	
 clean:
 	mvn clean
-	rm src/docker/*.jar
+	if [ -e src/docker/*.jar ] ; then rm src/docker/*.jar ; fi
 
 
 
