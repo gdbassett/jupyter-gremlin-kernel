@@ -17,6 +17,7 @@
 
 package org.lappsgrid.jupyter.lsd
 
+import groovy.util.logging.Slf4j
 import org.lappsgrid.jupyter.groovy.Config
 import org.lappsgrid.jupyter.groovy.GroovyKernel
 import org.lappsgrid.jupyter.groovy.json.Serializer
@@ -25,6 +26,7 @@ import org.lappsgrid.jupyter.groovy.json.Serializer
  *
  * @author Keith Suderman
  */
+@Slf4j('logger')
 class LsdKernel extends GroovyKernel {
     public static String GALAXY_HOST = "http://localhost:8000"
     public static String GALAXY_KEY = ""
@@ -33,27 +35,49 @@ class LsdKernel extends GroovyKernel {
         super(new LsdContext())
     }
 
+    Map info() {
+        return [
+                protocol_version: '5.0',
+                implementation: 'lsd',
+                implementation_version: '1.1.0',
+                language_info: [
+                        name: 'LSD',
+                        version: '1.1.0',
+                        mimetype: '',
+                        file_extension: '.lsd',
+                        pygments_lexer: '',
+                        codemirror_mode: '',
+                        nbconverter_exporter: ''
+                ],
+                banner: 'Lappsgrid Services DSL',
+                help_links: []
+        ]
+    }
+
     static void main(String[] args) {
         if (args.length < 1) {
-            println "No connection file passed to the LSD kernel."
+            logger.error "No connection file passed to the LSD kernel."
             System.exit(1)
         }
         File config = new File(args[0])
         if (!config.exists()) {
-            println "Kernel configuration not found."
+            logger.error "Kernel configuration not found."
             System.exit(1)
         }
 
         GALAXY_HOST = System.getenv("GALAXY_HOST")
         if (GALAXY_HOST) {
-            println "GALAXY_HOST is $GALAXY_HOST"
+            logger.info "GALAXY_HOST is $GALAXY_HOST"
         }
         else {
-            println "GALAXY_HOST not set.  You will not be able to communicate with a Galaxy instance."
+            logger.warn "GALAXY_HOST not set.  You will not be able to communicate with a Galaxy instance."
         }
         GALAXY_KEY = System.getenv("GALAXY_KEY")
-        if (!GALAXY_KEY) {
-            println "GALAXY_KEY not set.  You will not be able to communicate with a Galaxy instance."
+        if (GALAXY_KEY) {
+            logger.info("GALAXY_KEY is {}", GALAXY_KEY)
+        }
+        else {
+            logger.warn "GALAXY_KEY not set.  You will not be able to communicate with a Galaxy instance."
         }
 
         GroovyKernel kernel = new LsdKernel()

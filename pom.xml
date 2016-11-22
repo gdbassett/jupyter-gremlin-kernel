@@ -15,7 +15,7 @@
         <groovy.version>2.4.3</groovy.version>
         <ivy.version>2.4.0</ivy.version>
         <lapps.all.version>2.3.1</lapps.all.version>
-        <kernel.version>1.1.0-SNAPSHOT</kernel.version>
+        <kernel.version>1.1.0</kernel.version>
         <lapps.all.version>2.3.2</lapps.all.version>
     </properties>
     <build>
@@ -74,7 +74,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.3</version>
+                <version>2.6</version>
                 <executions>
                     <execution>
                         <id>assembly</id>

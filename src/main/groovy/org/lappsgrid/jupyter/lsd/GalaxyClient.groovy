@@ -23,14 +23,16 @@ import com.github.jmchilton.blend4j.galaxy.HistoriesClient
 import com.github.jmchilton.blend4j.galaxy.ToolsClient
 import com.github.jmchilton.blend4j.galaxy.beans.History
 import com.github.jmchilton.blend4j.galaxy.beans.HistoryContents
+import groovy.util.logging.Slf4j
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 /**
  * @author Keith Suderman
  */
+@Slf4j('logger')
 class GalaxyClient {
-    static final Logger logger = LoggerFactory.getLogger(GalaxyClient)
+//    static final Logger logger = LoggerFactory.getLogger(GalaxyClient)
 
     GalaxyInstance galaxy
     HistoriesClient histories
@@ -46,6 +48,7 @@ class GalaxyClient {
     }
 
     void connect(String url, String key) {
+        logger.info("Connecting to {}", url)
         galaxy = GalaxyInstanceFactory.get(url, key)
         if (galaxy) {
             logger.debug("Created a Galaxy client for {}", url)
@@ -54,7 +57,7 @@ class GalaxyClient {
             history = histories.histories.get(0)
         }
         else {
-            logger.warn("Unable to connect to Galaxy instance.")
+            logger.warn("Unable to get a Galaxy instance.")
         }
     }
 
