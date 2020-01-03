@@ -30,6 +30,7 @@ class LsdContext extends DefaultGroovyContext {
     CompilerConfiguration getCompilerConfiguration() {
         ImportCustomizer customizer = new ImportCustomizer()
         [
+            'org.apache.tinkerpop.gremlin.process.traversal.dsl.graph'
         // TODO: Replace below imports with appropriate imports from Gremlin
         /*    'org.lappsgrid.api',
             'org.lappsgrid.core',
@@ -47,7 +48,6 @@ class LsdContext extends DefaultGroovyContext {
 
         CompilerConfiguration configuration = new CompilerConfiguration()
         configuration.addCompilationCustomizers(customizer)
-        configuration.scriptBaseClass = BaseScript.class.name
         return configuration
     }
 
