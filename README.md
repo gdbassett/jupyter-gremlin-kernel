@@ -1,6 +1,6 @@
 # Jupyter Gremlin Kernel
 
-The Lappsgrid Serivces DSL (LSD) is a Groovy based DSL (Domain Specific Language) that can be used to invoke LAPPS Grid web services from Groovy scripts. 
+[Apache TinkerPop™](http://tinkerpop.apache.org/) is a graph computing framework for both graph databases (OLTP) and graph analytic systems (OLAP).  Tinkerpop Gremlin is a [Graph Transversal Language](http://tinkerpop.apache.org/gremlin.html) That can be used to build, manipulate, and query graph structured data accessable through a gremlin server.
 
 The [Jupyter](https://jupyter.org) gremlin kernel is a Jupyter kernel based on the [Jupyter Groovy Kernel](https://github.com/lappsgrid-incubator/jupyter-groovy-kernel) and [Jupyter LSD Kernel](https://github.com/lappsgrid-incubator/jupyter-lsd-kernel) that allows the user to use jupyter as a webUI for a gremlin console.
 
