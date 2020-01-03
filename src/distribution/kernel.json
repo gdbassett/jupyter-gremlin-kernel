@@ -1,6 +1,6 @@
 {
   "argv": [ "java", "-jar", "__PATH__", "{connection_file}" ],
-  "display_name": "LSD",
+  "display_name": "Gremlin",
   "language": "groovy",
-  "env": { "PS1":"lsd>"}
+  "env": { "PS1":"gremlin>"}
 }

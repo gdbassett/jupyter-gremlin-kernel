@@ -1,6 +1,6 @@
 VERSION=$(shell cat VERSION)
-NAME=jupyter-lsd-kernel
-IMAGE=lappsgrid/$(NAME)
+NAME=jupyter-germlin-kernel
+IMAGE=gremlin/$(NAME)
 
 all: jar docker
 

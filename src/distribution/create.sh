@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-NAME=jupyter-lsd-kernel
+NAME=jupyter-gremlin-kernel
 
 TARGET=../../target
 VERSION=`cat ../../VERSION`
@@ -31,16 +31,18 @@ set -u
 mkdir $NAME
 cat kernel.json | sed \"s|__PATH__|\$1/$JAR|\" > $NAME/kernel.json
 cp $JAR \$1
-jupyter kernelspec install --replace --name lsd $NAME
+jupyter kernelspec install --replace --name gremlin $NAME
 rm -rf $NAME" > $DIST/install.sh
 chmod ug+x $DIST/install.sh
 
 cd $TARGET
 echo "Creating tgz file."
 tar czf $NAME-$VERSION.tgz $NAME-$VERSION
-echo "Uploading $NAME-$VERSION.tgz"
-scp -P 22022 $NAME-$VERSION.tgz suderman@anc.org:/usr/share/wp-lapplanders/downloads
-echo "Uploading $NAME-latest.tgz"
-scp -P 22022 $NAME-$VERSION.tgz suderman@anc.org:/usr/share/wp-lapplanders/downloads/$NAME-latest.tgz
+
+## TODO: need to update below files to appropraite upload directory, likely in github builds.
+#echo "Uploading $NAME-$VERSION.tgz"
+#scp -P 22022 $NAME-$VERSION.tgz suderman@anc.org:/usr/share/wp-lapplanders/downloads
+#echo "Uploading $NAME-latest.tgz"
+#scp -P 22022 $NAME-$VERSION.tgz suderman@anc.org:/usr/share/wp-lapplanders/downloads/$NAME-latest.tgz
 
 echo "Done"

@@ -15,7 +15,7 @@
  *
  */
 
-package org.lappsgrid.jupyter.lsd
+package org.gdbassett.jupyter.gremlin
 
 import groovy.util.logging.Slf4j
 import org.lappsgrid.jupyter.groovy.Config
@@ -27,36 +27,36 @@ import org.lappsgrid.jupyter.groovy.json.Serializer
  * @author Keith Suderman
  */
 @Slf4j('logger')
-class LsdKernel extends GroovyKernel {
-    public static String GALAXY_HOST = "http://localhost:8000"
-    public static String GALAXY_KEY = ""
+class gremlinKernel extends GroovyKernel {
+//    public static String GALAXY_HOST = "http://localhost:8000"
+//    public static String GALAXY_KEY = ""
 
-    public LsdKernel() {
-        super(new LsdContext())
+    public GremlinKernel() {
+        super(new GremlinContext())
     }
 
     Map info() {
         return [
                 protocol_version: '5.0',
                 implementation: 'lsd',
-                implementation_version: '1.1.0',
+                implementation_version: '0.1.0.9000',
                 language_info: [
-                        name: 'LSD',
-                        version: '1.1.0',
+                        name: 'Gremlin',
+                        version: '0.1.0.9000',
                         mimetype: '',
-                        file_extension: '.lsd',
+                        file_extension: '.gremlin',
                         pygments_lexer: '',
                         codemirror_mode: '',
                         nbconverter_exporter: ''
                 ],
-                banner: 'Lappsgrid Services DSL',
+                banner: 'Gremlin Console',
                 help_links: []
         ]
     }
 
     static void main(String[] args) {
         if (args.length < 1) {
-            logger.error "No connection file passed to the LSD kernel."
+            logger.error "No connection file passed to the Gremlin kernel."
             System.exit(1)
         }
         File config = new File(args[0])
@@ -65,7 +65,8 @@ class LsdKernel extends GroovyKernel {
             System.exit(1)
         }
 
-        GALAXY_HOST = System.getenv("GALAXY_HOST")
+// TODO: Assume below is unnecessary, but leaving in temporarily as a reference to it's existance in case something similar is needed.
+/*        GALAXY_HOST = System.getenv("GALAXY_HOST")
         if (GALAXY_HOST) {
             logger.info "GALAXY_HOST is $GALAXY_HOST"
         }
@@ -79,8 +80,9 @@ class LsdKernel extends GroovyKernel {
         else {
             logger.warn "GALAXY_KEY not set.  You will not be able to communicate with a Galaxy instance."
         }
+*/
 
-        GroovyKernel kernel = new LsdKernel()
+        GroovyKernel kernel = new GremlinKernel()
         kernel.connectionFile = config
         kernel.run()
     }

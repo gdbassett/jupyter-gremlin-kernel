@@ -15,7 +15,7 @@
  *
  */
 
-package org.lappsgrid.jupyter.lsd
+package org.gdbassett.jupyter.gremlin
 
 import org.codehaus.groovy.control.CompilerConfiguration
 import org.codehaus.groovy.control.customizers.ImportCustomizer
@@ -30,18 +30,20 @@ class LsdContext extends DefaultGroovyContext {
     CompilerConfiguration getCompilerConfiguration() {
         ImportCustomizer customizer = new ImportCustomizer()
         [
-            'org.lappsgrid.api',
+        // TODO: Replace below imports with appropriate imports from Gremlin
+        /*    'org.lappsgrid.api',
             'org.lappsgrid.core',
             'org.lappsgrid.client',
             'org.lappsgrid.discriminator',
             'org.lappsgrid.serialization',
             'org.lappsgrid.serialization.lif',
             'org.lappsgrid.serialization.datasource',
-            'org.lappsgrid.metadata'
+            'org.lappsgrid.metadata' */
         ].each {
             customizer.addStarImports(it)
         }
-        customizer.addStaticImport('org.lappsgrid.discriminator.Discriminators', 'Uri')
+        // TODO: replace below line if necessary
+        //customizer.addStaticImport('org.lappsgrid.discriminator.Discriminators', 'Uri')
 
         CompilerConfiguration configuration = new CompilerConfiguration()
         configuration.addCompilationCustomizers(customizer)

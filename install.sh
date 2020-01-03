@@ -23,7 +23,7 @@ echo "Installing the kernel to $KERNEL_DIR"
 VERSION=`cat VERSION`
 
 # The name of the distribution directory to create.
-NAME=jupyter-lsd-kernel
+NAME=jupyter-gremlin-kernel
 JAR=$NAME-$VERSION.jar
 DIST=target/$NAME
 
@@ -35,7 +35,7 @@ fi
 cp target/$JAR $KERNEL_DIR
 cat src/distribution/kernel.json | sed "s|__PATH__|$KERNEL_DIR/$JAR|" > $DIST/kernel.json
 
-echo "Installing the Groovy kernel"
+echo "Installing the Gremlin kernel"
 jupyter kernelspec install --replace --name lsd $DIST
 
 echo "Done."
