@@ -12,18 +12,16 @@
     <artifactId>jupyter-gremlin-kernel</artifactId>
     <version>0.1.0.9000</version>
     <properties>
-        <groovy.version>2.4.3</groovy.version>
+        <groovy.version>2.5.8</groovy.version>
         <tinkerpop.version>3.4.4</tinkerpop.version>
-        <ivy.version>2.4.0</ivy.version>
-        <lapps.all.version>2.3.1</lapps.all.version>
+        <ivy.version>2.5.0</ivy.version>
         <kernel.version>1.1.0</kernel.version>
-        <lapps.all.version>2.3.2</lapps.all.version>
     </properties>
     <build>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.8.1</version>
                 <configuration>
                     <compilerId>groovy-eclipse-compiler</compilerId>
                     <verbose>true</verbose>
@@ -33,19 +31,19 @@
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-eclipse-compiler</artifactId>
-                        <version>2.9.2-01</version>
+                        <version>3.6.0-03</version>
                     </dependency>
                     <dependency>
                         <groupId>org.codehaus.groovy</groupId>
                         <artifactId>groovy-eclipse-batch</artifactId>
-                        <version>2.4.3-01</version>
+                        <version>2.5.8-03</version>
                     </dependency>
                 </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.groovy</groupId>
                 <artifactId>groovy-eclipse-compiler</artifactId>
-                <version>2.9.2-01</version>
+                <version>3.6.0-03</version>
                 <extensions>true</extensions>
             </plugin>
             <plugin>
@@ -106,10 +104,12 @@
             <artifactId>jupyter-groovy-kernel</artifactId>
             <version>${kernel.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-all</artifactId>
-            <version>${groovy.version}</version>
+            <version>2.5.8</version>
+            <type>pom</type>
         </dependency>
         <!-- TODO: Do I need a gremlin dependency? //-->
         <dependency>
@@ -143,15 +143,29 @@
             <version>1.17.1</version>
         </dependency>
     </dependencies>
+    <!-- from https://github.com/groovy/groovy-eclipse/wiki/Groovy-Eclipse-Maven-plugin //-->
+    <pluginRepositories>
+        <pluginRepository>
+          <id>bintray</id>
+          <name>Groovy Bintray</name>
+          <url>https://dl.bintray.com/groovy/maven</url>
+          <releases>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 <!-- Based on https://stackoverflow.com/questions/6625752/do-you-know-the-maven-profile-for-mvnrepository-com //-->
-<!--    <repositories>
+    <repositories>
         <repository>
             <id>mvnrepository</id>
             <name>mvnrepository</name>
             <url>http://www.mvnrepository.com</url>
         </repository>
     </repositories>
-        <activeProfiles>
+<!--    <activeProfiles>
         <activeProfile>mvnrepository</activeProfile>
     </activeProfiles> //-->
 </project>

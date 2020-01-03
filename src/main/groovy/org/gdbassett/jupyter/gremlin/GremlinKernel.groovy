@@ -38,7 +38,7 @@ class gremlinKernel extends GroovyKernel {
     Map info() {
         return [
                 protocol_version: '5.0',
-                implementation: 'lsd',
+                implementation: 'gremlin',
                 implementation_version: '0.1.0.9000',
                 language_info: [
                         name: 'Gremlin',
