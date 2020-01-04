@@ -24,7 +24,7 @@ import org.lappsgrid.jupyter.groovy.context.DefaultGroovyContext
 /**
  * @author Keith Suderman
  */
-class LsdContext extends DefaultGroovyContext {
+class GremlinContext extends DefaultGroovyContext {
 
     @Override
     CompilerConfiguration getCompilerConfiguration() {

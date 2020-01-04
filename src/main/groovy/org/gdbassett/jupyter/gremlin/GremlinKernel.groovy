@@ -27,7 +27,7 @@ import org.lappsgrid.jupyter.groovy.json.Serializer
  * @author Keith Suderman
  */
 @Slf4j('logger')
-class gremlinKernel extends GroovyKernel {
+class GremlinKernel extends GroovyKernel {
 //    public static String GALAXY_HOST = "http://localhost:8000"
 //    public static String GALAXY_KEY = ""
 
