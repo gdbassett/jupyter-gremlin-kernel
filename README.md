@@ -61,6 +61,18 @@ A Docker image containing the gremlin kernel is available from the [Docker Hub](
 
 Inside the container Jupyter uses the directory */home/jovyan* to save and load notebooks.  To persists notebooks created inside the container mount a local directory as */home/jovyan*.
 
+Until the dockerfile has been uploaded to dockerhub, the following process should build an environment locally:
+```bash
+$> docker pull tinkerpop/gremlin-server
+$> docker run -p 8182:8182 --name gremlin-server-test tinkerpop/gremlin-server
+$> cd <project root>
+$> cp ./target/jupyter-gremlin-kernel-<kernel version>.jar ./
+$> docker build -t jupyter-gremlin-kernel -f ./src/docker/Dockerfile .
+$> docker run -p 8888:8888 --name jupyter-gremlin-kernel-c jupyter-gremlin-kernel
+```
+Connect to https://localhost:8888 and enter the token shown in your console.
+
+TODO: Upload Kernel to docker hub.  Until then below won't work.
 ```bash
 $> VOLUME="-v $HOME/notebooks:/home/jovyan"
 $> PORTS="-p 8888:8888"
