@@ -65,7 +65,7 @@ Until the dockerfile has been uploaded to dockerhub, the following process shoul
 ```bash
 $> docker pull tinkerpop/gremlin-server
 $> docker network create -d bridge gremlin-net
-$> docker run -p 8182:8182 --network=gremlin-net --name gremlin-server tinkerpop/gremlin-server
+$> docker run -p 8182:8182 --network=gremlin-net --name gremlin-server-c tinkerpop/gremlin-server
 $> cd <project root>
 $> cp ./target/jupyter-gremlin-kernel-<kernel version>.jar ./
 $> docker build -t jupyter-gremlin-kernel:latest -f ./src/docker/Dockerfile .
@@ -73,6 +73,10 @@ $> docker rm jupyter-gremlin-kernel-c # if necessary
 $> docker run -p 8888:8888 --network=gremlin-net --name jupyter-gremlin-kernel-c jupyter-gremlin-kernel:latest
 ```
 Connect to https://localhost:8888 and enter the token shown in your console.
+
+![alt text](in-memory_graph.png "A toy in-memory graph instance example.")
+![alt text](remote_graph.png "A toy remote graph instance example.")
+
 
 TODO: Upload Kernel to docker hub.  Until then below won't work.
 ```bash
