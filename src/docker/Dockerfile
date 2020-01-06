@@ -16,6 +16,9 @@ COPY ./src/docker/startup.sh /usr/bin/startup
 RUN chmod a+x /usr/bin/startup
 RUN jupyter kernelspec install --name=gremlin /jupyter/gremlin
 
+RUN mkdir /home/jovyan/conf
+ADD https://raw.githubusercontent.com/apache/tinkerpop/master/gremlin-console/conf/remote-graph.properties /home/jovyan/conf/
+ADD https://raw.githubusercontent.com/apache/tinkerpop/master/gremlin-console/conf/remote-objects.yaml /home/jovyan/conf/
 RUN chown -R $NB_UID:$NB_UID /home/jovyan/
 USER $NB_UID
 WORKDIR /home/jovyan

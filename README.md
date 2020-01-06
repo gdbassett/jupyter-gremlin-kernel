@@ -67,8 +67,9 @@ $> docker pull tinkerpop/gremlin-server
 $> docker run -p 8182:8182 --name gremlin-server-test tinkerpop/gremlin-server
 $> cd <project root>
 $> cp ./target/jupyter-gremlin-kernel-<kernel version>.jar ./
-$> docker build -t jupyter-gremlin-kernel -f ./src/docker/Dockerfile .
-$> docker run -p 8888:8888 --name jupyter-gremlin-kernel-c jupyter-gremlin-kernel
+$> docker build -t jupyter-gremlin-kernel:latest -f ./src/docker/Dockerfile .
+$> docker rm jupyter-gremlin-kernel-c # if necessary
+$> docker run -p 8888:8888 --name jupyter-gremlin-kernel-c jupyter-gremlin-kernel:latest
 ```
 Connect to https://localhost:8888 and enter the token shown in your console.
 
