@@ -17,6 +17,7 @@
 
 package org.gdbassett.jupyter.gremlin
 
+import org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph
 import org.apache.tinkerpop.gremlin.driver.Client
 import org.apache.tinkerpop.gremlin.driver.Cluster
 import org.apache.tinkerpop.gremlin.driver.Host
@@ -65,7 +66,8 @@ class GremlinContext extends DefaultGroovyContext {
             .addMethodImports(CoreImports.getMethodImports()).create()
 
     private static org.apache.tinkerpop.gremlin.jsr223.ImportCustomizer driverImports = DefaultImportCustomizer.build()
-            .addClassImports(Cluster.class,
+            .addClassImports(TinkerGraph.class,
+                    Cluster.class,
                     Client.class,
                     Host.class,
                     LoadBalancingStrategy.class,

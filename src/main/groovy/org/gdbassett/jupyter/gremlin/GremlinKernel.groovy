@@ -65,23 +65,6 @@ class GremlinKernel extends GroovyKernel {
             System.exit(1)
         }
 
-// TODO: Assume below is unnecessary, but leaving in temporarily as a reference to it's existance in case something similar is needed.
-/*        GALAXY_HOST = System.getenv("GALAXY_HOST")
-        if (GALAXY_HOST) {
-            logger.info "GALAXY_HOST is $GALAXY_HOST"
-        }
-        else {
-            logger.warn "GALAXY_HOST not set.  You will not be able to communicate with a Galaxy instance."
-        }
-        GALAXY_KEY = System.getenv("GALAXY_KEY")
-        if (GALAXY_KEY) {
-            logger.info("GALAXY_KEY is {}", GALAXY_KEY)
-        }
-        else {
-            logger.warn "GALAXY_KEY not set.  You will not be able to communicate with a Galaxy instance."
-        }
-*/
-
         GroovyKernel kernel = new GremlinKernel()
         kernel.connectionFile = config
         kernel.run()
