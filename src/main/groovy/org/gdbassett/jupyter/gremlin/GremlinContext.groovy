@@ -32,8 +32,8 @@ class GremlinContext extends DefaultGroovyContext {
         [
             'org.apache.tinkerpop.gremlin.process.traversal.dsl.graph',
             'org.apache.tinkerpop.gremlin.structure.util',
-            'org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph',
-            'org.apache.tinkerpop.gremlin.driver.remote.DriverRemoteConnection'
+            'org.apache.tinkerpop.gremlin.tinkergraph.structure',
+            'org.apache.tinkerpop.gremlin.driver.remote'
         // TODO: Replace below imports with appropriate imports from Gremlin
         /*    'org.lappsgrid.api',
             'org.lappsgrid.core',

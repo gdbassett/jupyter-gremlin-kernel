@@ -64,12 +64,13 @@ Inside the container Jupyter uses the directory */home/jovyan* to save and load 
 Until the dockerfile has been uploaded to dockerhub, the following process should build an environment locally:
 ```bash
 $> docker pull tinkerpop/gremlin-server
-$> docker run -p 8182:8182 --name gremlin-server-test tinkerpop/gremlin-server
+$> docker network create -d bridge gremlin-net
+$> docker run -p 8182:8182 --network=gremlin-net --name gremlin-server tinkerpop/gremlin-server
 $> cd <project root>
 $> cp ./target/jupyter-gremlin-kernel-<kernel version>.jar ./
 $> docker build -t jupyter-gremlin-kernel:latest -f ./src/docker/Dockerfile .
 $> docker rm jupyter-gremlin-kernel-c # if necessary
-$> docker run -p 8888:8888 --name jupyter-gremlin-kernel-c jupyter-gremlin-kernel:latest
+$> docker run -p 8888:8888 --network=gremlin-net --name jupyter-gremlin-kernel-c jupyter-gremlin-kernel:latest
 ```
 Connect to https://localhost:8888 and enter the token shown in your console.
 
