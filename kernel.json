@@ -1,5 +1,5 @@
 {
-  "argv": [ "java", "-jar", "__PATH__", "{connection_file}" ],
+  "argv": [ "java", "-XX:MaxRAMPercentage=90.0", "-XX:-UseCompressedOops", "-jar", "__PATH__", "{connection_file}" ],
   "display_name": "Gremlin",
   "language": "groovy",
   "env": { "PS1":"gremlin>"}
